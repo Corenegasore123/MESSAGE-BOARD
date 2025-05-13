@@ -168,7 +168,7 @@ function App() {
       
       <div className="container">
         <h1 className="title">
-          <span className="emoji">🎮</span> Blockchain Message Board
+          <span className="emoji">📝</span> Blockchain Message Board
         </h1>
         
         <div className="card message-display">
