@@ -6,7 +6,7 @@ import "./styles.css";
 function App() {
   const [web3, setWeb3] = useState(null);
   const [contract, setContract] = useState(null);
-  const [currentMessage, setCurrentMessage] = useState("Initial Message");
+  const [currentMessage, setCurrentMessage] = useState("This Is My Initial Message");
   const [newMessage, setNewMessage] = useState("");
   const [account, setAccount] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -53,11 +53,11 @@ function App() {
       if (message && message.trim() !== "") {
         setCurrentMessage(message);
       } else {
-        setCurrentMessage("Initial Message");
+        setCurrentMessage("This Is My Initial Message");
       }
     } catch (error) {
       console.error("Error fetching message:", error);
-      setCurrentMessage("Initial Message");
+      setCurrentMessage("This Is My Initial Message");
     }
   };
 
@@ -76,7 +76,6 @@ function App() {
       setNewMessage("");
     } catch (error) {
       console.error("Error updating message:", error);
-      // Re-fetch the message to show the current state
       fetchMessage(contract);
     } finally {
       setIsLoading(false);
@@ -85,12 +84,11 @@ function App() {
 
   const handleRefresh = () => {
     setNewMessage("");
-    fetchMessage(contract);
   };
 
   return (
     <div className="container">
-      <h1 className="title">Blockchain Message Board</h1>
+      <h1 className="title">🎮 Blockchain Message Board</h1>
       <div className="message-display">
         <h2>Current Message: {currentMessage}</h2>
       </div>
