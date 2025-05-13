@@ -221,10 +221,6 @@ button:disabled {
   color: rgb(244, 244, 244);
 }
 
-.btn-icon {
-  font-size: 1.25rem;
-}
-
 /* Loading spinner */
 .loading-spinner {
   display: flex;

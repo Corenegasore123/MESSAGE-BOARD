@@ -69,6 +69,9 @@ function App() {
     }, 5000);
   };
 
+  // Added a flag to track if this is the first fetch
+  const [isInitialFetch, setIsInitialFetch] = useState(true);
+
   const fetchMessage = async (contractInstance) => {
     if (!contractInstance) return;
     
@@ -83,7 +86,16 @@ function App() {
     } catch (error) {
       console.error("Error fetching message:", error);
       setCurrentMessage("This Is My Initial Message");
-      showNotification("Error fetching message from blockchain", "error");
+      
+      // Only show error notification if it's not the initial fetch
+      if (!isInitialFetch) {
+        showNotification("Error fetching message from blockchain", "error");
+      }
+      
+      // Reset the flag after first fetch attempt
+      if (isInitialFetch) {
+        setIsInitialFetch(false);
+      }
     } finally {
       setIsLoading(false);
     }
@@ -156,7 +168,7 @@ function App() {
       
       <div className="container">
         <h1 className="title">
-          <span className="emoji">📝</span> Blockchain Message Board
+          <span className="emoji">🎮</span> Blockchain Message Board
         </h1>
         
         <div className="card message-display">
@@ -204,7 +216,6 @@ function App() {
                 </>
               ) : (
                 <>
-                  <span className="btn-icon">💾</span>
                   Update Message
                 </>
               )}
@@ -215,7 +226,6 @@ function App() {
               className="refresh-btn"
               disabled={isLoading || !connectionStatus.connected}
             >
-              <span className="btn-icon">🔄</span>
               Refresh
             </button>
           </div>
